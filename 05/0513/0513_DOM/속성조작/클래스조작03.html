@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>classList.toggle 실습</title>
+  <style>
+    body {
+      background-color: white;
+      color: black;
+      font-family: Arial, sans-serif;
+      transition: 0.3s;
+    }
+
+    .box {
+      width: 280px;
+      padding: 24px;
+      background-color: #f2f2f2;
+      border: 3px solid #ccc;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    body.dark {
+      background-color: #222;
+      color: white;
+    }
+
+    body.dark .box {
+      background-color: #333;
+      border-color: orange;
+      box-shadow: 0 0 20px orange;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>다크 모드 카드</h2>
+    <p>dark 클래스를 적용해보세요.</p>
+  </div>
+
+  <script>
+
+  </script>
+</body>
+</html>

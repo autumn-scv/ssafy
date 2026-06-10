@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>설문조사</h1>
+
+    <form @submit.prevent="submitForm">
+      <div>
+        <label for="name">이름: </label>
+        <input v-model="formData.name" type="text">
+      </div>
+
+      <div>
+        <label for="email">이메일: </label>
+        <input v-model="formData.email" type="email">
+      </div>
+
+      <div>
+        <label for="age">나이: </label>
+        <input v-model="formData.age" type="number">
+      </div>
+
+      <div>
+        <label for="residence">거주지: </label>
+        <select v-model="formData.residence" required>
+          <option value="" disabled selected>거주지를 선택하시오.</option>
+          <option>서울</option>
+          <option>경기</option>
+          <option>충청</option>
+          <option>전라</option>
+          <option>경상</option>
+        </select>
+      </div>
+
+      <div>
+        <label>사용하는 언어: </label>
+        <div>
+          <input type="checkbox" v-model="formData.languages" value="Python">
+          <label for="python">Python</label>
+        </div>
+        <div>
+          <input type="checkbox" v-model="formData.languages" value="JavaScript">
+          <label for="javascript">JavaScript</label>
+        </div>
+        <div>
+          <input type="checkbox" v-model="formData.languages" value="C#">
+          <label for="csharp">C#</label>
+        </div>
+        <div>
+          <input type="checkbox" v-model="formData.languages" value="Ruby">
+          <label for="ruby">Ruby</label>
+        </div>
+      </div>
+      <input type="submit" value="제출">
+    </form>
+  </div>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref } = Vue
+
+    const app = createApp({
+      setup() {
+        const formData = ref({name: '', email: '', age: '', residence: '', languages: []})
+        
+        const submitForm = () => {
+          console.log('name:', formData.value.name)
+          console.log('email:', formData.value.email)
+          console.log('age:', formData.value.age)
+          console.log('residence:', formData.value.residence)
+          console.log('languages:', formData.value.languages)
+        }
+        return {
+          formData,
+          submitForm,
+        }
+      }
+    })
+
+    app.mount('#app')
+  </script>
+</body>
+
+</html>

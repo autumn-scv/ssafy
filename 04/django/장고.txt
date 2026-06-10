@@ -1,0 +1,22 @@
+깃 클론 - venv venv - install django - freeze - pip list
+
+django-admin startproject config .
+
+python manage.py startapp articles
+
+python -m venv venv
+source venv/Scripts/activate
+ pip list
+ pip install django
+pip list
+pip install -r requirements.txt
+pip freeze > requirements.txt
+
+python manage.py startapp articles
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+python manage.py createsuperuser
+
+django-admin startproject config .
+ctrl + l 터미널 깔끔하게 보임

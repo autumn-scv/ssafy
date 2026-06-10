@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>{{ person.username }}님의 프로필</h1>
+  <div> 
+    <div>
+      팔로잉 : {{ person.followings.all|length }} / 
+      팔로워 : <span id="followers-count">{{ person.followers.all|length }}</span>
+    </div>
+    {% if request.user != person %}
+      <div>
+        <form id="follow-form" data-user-id="{{ person.pk }}">
+          {% csrf_token %}
+          {% if request.user in person.followers.all %}
+            <input type="submit" id="follow-btn" value="Unfollow">
+          {% else %}
+            <input type="submit" id="follow-btn" value="Follow">
+          {% endif %}
+        </form>
+    </div>
+    {% endif %}
+  </div>  
+  <hr>
+  <h2>{{ person.username }}가 작성한 게시글</h2>
+  {% for article in person.article_set.all %}
+    <div>{{ article.title }}</div>
+  {% endfor %}
+  <hr>
+  <h2>{{ person.username }}가 작성한 댓글</h2> 
+  {% for comment in person.comment_set.all %} 
+    <div>{{ comment.content }}</div> 
+  {% endfor %}
+  
+  <hr>
+  <h2>{{ person.username }}가 좋아요한 게시글</h2> 
+  {% for article in person.like_articles.all %} 
+    <div>{{ article.title }}</div> 
+  {% endfor %}
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script>
+    const csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const followForm = document.querySelector('#follow-form');
+
+  
+    const followersCountTag = document.querySelector('#followers-count');
+    const followBtn = document.querySelector('#follow-btn');
+
+    followForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      console.log('팔로우 버튼 클릭!');
+      
+      const userPk = followForm.dataset.userId;
+      console.log('가져 온 유저PK:', userPk);
+
+      axios({
+        method: 'post',
+        url: `/accounts/${userPk}/follow/`,
+        headers: {
+          'X-CSRFToken': csrf_token,
+        }
+      }).then((response)=>{
+        console.log('서버 응답 결과:', response.data)
+        
+        const isFollowed = response.data.is_followed;
+        const followersCount = response.data.followers_count;
+
+
+        followersCountTag.textContent = followersCount;
+
+
+        if (isFollowed === true) {
+          followBtn.value = 'Unfollow';
+        } else {
+          followBtn.value = 'Follow';
+        }
+
+      }).catch((error)=>{
+        console.error('에러 발생:', error)
+      })
+    });
+  </script>
+</body>
+</html>

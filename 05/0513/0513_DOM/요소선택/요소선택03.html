@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <h2 class="title">사이드 제목</h2>
+    </aside>
+    <section class="main">
+        <h2 class="title">메인 제목</h2>
+    </section>
+
+    <script>
+        // .main 안에 있는 .title 요소만 선택하기
+        const title = document.querySelector(".main .title")
+        console.log(title)
+        // .sidebar 안의 .title은 선택되면 안됨
+        // 사이드 제목 뽑으려면 젤 먼저인 이거
+        // const title = document.querySelector(".title")
+        // console.log(title)
+    </script>
+</body>
+
+</html>

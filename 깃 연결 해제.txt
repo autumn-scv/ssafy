@@ -1,0 +1,33 @@
+- 깃 경로 모아서 찾기
+find . -name ".git" -type d -prune -print | while read d; do
+  repo="$(dirname "$d")"
+  echo "=============================="
+  echo "📁 $repo"
+  (cd "$repo" && git remote -v)
+done
+
+새 원격 저장소 연결
+git remote add origin https://github.com/유저명/새레포.git
+
+- 원격 저장소 복제
+git clone 저장소주소
+
+- Push / Pull
+업로드
+git push origin 브랜치명
+
+처음 push
+git push -u origin main
+
+내려받기
+git pull
+
+연결된 저장소 확인
+git remote -v
+
+저장소 연결 해제(해당 경로에서)
+git remote remove origin
+
+git 하위 폴더에 git 또 있을 때
+find . -mindepth 2 -name ".git" -type d -exec rm -rf {} +
+git rm -r --cached .

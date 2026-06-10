@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ todo.title }}{% endblock title %}
+{% block content %}
+<div class="card mb-4">
+    {% if todo.image %}
+        <img src="{{ todo.image.url }}" alt="Todo Image" class="card-img-top" style="width: 100%; height: 300px; object-fit: cover;">
+    {% else %}
+        <img src="{% static 'default_image.png' %}" alt="Default Image" class="card-img-top" style="width: 100%; height: 300px; object-fit: cover;">
+    {% endif %}
+    <div class="card-body">
+        <h1 class="card-title {% if todo.completed %}completed{% endif %}">{{ todo.title }}</h1>
+        <h6 class="card-subtitle mb-2 text-muted">By 
+            <a href="{% url 'accounts:profile' todo.user.username %}">
+                {{ todo.user.username }}
+            </a>
+        </h6>
+        <p class="card-text {% if todo.completed %}completed{% endif %}">{{ todo.content }}</p>
+        <div class="text-muted mb-3">
+            Created on {{ todo.created_at|date:"F d, Y" }}
+            {% if todo.completed %}
+            <span class="badge bg-success">완료</span>
+            {% else %}
+            <span class="badge bg-warning">진행중</span>
+            {% endif %}
+        </div>
+        
+        {% if user == todo.user %}
+        <div class="btn-group">
+            <a href="{% url 'todos:update' todo.pk %}" class="btn btn-outline-primary">수정</a>
+            <form action="{% url 'todos:delete' todo.pk %}" method="POST" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger">삭제</button>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <h4>댓글</h4>
+        {% if request.user.is_authenticated %}
+        <form action="{% url 'todos:comment_create' todo.pk %}" method="POST" class="mb-4">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <button type="submit" class="btn btn-primary">댓글 작성</button>
+        </form>
+        {% endif %}
+
+        {% for comment in todo.comments.all %}
+        <div class="card mb-2">
+            <div class="card-body">
+                <p class="card-text">{{ comment.content }}</p>
+                <small class="text-muted">
+                    By 
+                    <a href="{% url 'accounts:profile' comment.user.username %}">
+                        {{ comment.user.username }}
+                    </a>
+                    on {{ comment.created_at|date:"F d, Y" }}
+                    <form action="{% url 'todos:comment_delete' todo.pk comment.pk %}" method="POST" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-danger">삭제</button>
+                    </form>
+                </small>
+            </div>
+        </div>
+        {% empty %}
+        <p>댓글이 없습니다.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

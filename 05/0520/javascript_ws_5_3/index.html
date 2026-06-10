@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>인기 영화들</h1>
+  <ul>
+    
+  </ul>
+  
+   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+   <script>
+    const ul = document.querySelector('ul')
+    const filmURL = 'https://api.themoviedb.org/3/movie/popular?language=ko-KR&page=1'
+    const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDEyNWRiNjcxZmU3NzU4OGQwN2Q5NzE5YTNmYjdmMCIsIm5iZiI6MTc2OTc0MTU1Ni45NTEsInN1YiI6IjY5N2MxY2Y0NzZlY2Q3ZWViOWEwOTgzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Xpwa3FRHoTV1HZ5gEBg2QdUlhh8DMH0iKhfRnhGVsPg'
+
+    function popularFilm(){
+      axios({
+        method: 'GET',
+        url: filmURL,
+        headers: {
+          Authorization: `Bearer ${ACCESS_TOKEN}`,
+          accept: 'application/json'
+        }
+      }).then((response)=> {
+          const films = response.data.results
+          const topFilms = []
+          
+          films.forEach((film) => {
+            if (film.vote_average >= 7) {
+              topFilms.push(film)
+            }
+          })
+
+          topFilms.forEach((film) => {
+            const li = document.createElement('li')
+            li.textContent = film.title
+            ul.appendChild(li)
+          })
+      }).catch((error) => {
+          console.error("데이터 요청 실패:", error)
+      })
+    }
+
+  
+    
+
+    popularFilm()
+   </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h1>다양한 전시 정보</h1>
+    <hr>
+    <ul>
+      <li id="영어 제목" :id="enTitle">
+        <h3>{{ koTitle }}</h3>
+        <p v-html="description">전시 정보 설명</p>
+        <hr>
+        <p>{{ artMuseum }}</p>
+				<a :href="museumURL">전시장 바로가기</a>
+        <hr>
+        <p>입장권 구매하기</p>
+        <div>
+          <span>인원 수 : {{ countPeople }} 명 </span>
+          <button @click="decreaseNum">-</button>
+          <button @click="increaseNum">+</button>
+        </div>
+        <p>총 입장료 : {{ totalPrice }} 원</p>
+        <hr>
+      </li>
+    </ul>
+  </div>
+
+<script src="https://unpkg.com/vue@3.5.34/dist/vue.global.js"></script>
+ 
+  <script>
+    const { createApp, ref } = Vue
+    const app = createApp({
+      setup() {
+        const koTitle = ref('모네 인사이드')
+        const enTitle = ref('monet-inside')
+        const artMuseum = ref('예술의 전당')
+        const museumURL = ref('https://www.sac.or.kr/')
+        const description = ref('<p> &lt;모네 인사이드&gt; 는 빛의 화가 <b>클로드 모네</b>가 남긴 소중한 명작들을 현대적 감각으로 재해석해 음악과 함께 감상하는 미디어아트 전시입니다. </p>')
+        
+        const totalPrice = ref(0)
+        const countPeople = ref(0)
+        const decreaseNum = function() {
+          if (countPeople.value > 0) {
+            countPeople.value -= 1
+            // console.log(event)
+            totalPrice.value = countPeople.value * 1000  
+          }
+
+        } 
+        const increaseNum = function() {
+          countPeople.value += 1
+          // console.log(event)
+          totalPrice.value = countPeople.value * 1000
+        }
+
+        
+          // 이렇게 하면 원하는 숫자씩 늘어남 
+          // const add = function(number){
+          //   count.value += number
+          // }
+        return {
+        koTitle,
+        enTitle,
+        artMuseum,
+        museumURL,
+        description,
+        countPeople,
+        totalPrice,
+        decreaseNum,
+        increaseNum,
+      }
+    }  
+    })
+    app.mount('#app')
+  </script>
+</body>
+</html>

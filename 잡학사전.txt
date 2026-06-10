@@ -1,0 +1,8 @@
+ctrl+/ 주석 변경 가능
+alt shift 방향키 복사
+
+검색) 자격 증명 관리자
+windows 자격... git.com 제거!
+git bash 들가
+git config --global user.name ___
+git config -- global user.email __

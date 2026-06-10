@@ -1,0 +1,86 @@
+{
+  "adult": false,
+  "backdrop_path": "/2pBDP2Ip5mQemw3PYTjDLYv9XI9.jpg",
+  "belongs_to_collection": null,
+  "budget": 0,
+  "homepage": "http://beyondutopiadoc.com",
+  "id": 1070032,
+  "imdb_id": "tt25470468",
+  "origin_country": [
+    "US"
+  ],
+  "original_language": "en",
+  "original_title": "Beyond Utopia",
+  "overview": "A courageous pastor uses his underground network to rescue and aid North Korean families as they risk their lives to embrace freedom.",
+  "popularity": 0.6056,
+  "poster_path": "/fcyCtyXabv0X8TInqoL9yq5DCdb.jpg",
+  "production_companies": [
+    {
+      "id": 3766,
+      "logo_path": null,
+      "name": "Ideal Partners",
+      "origin_country": "US"
+    },
+    {
+      "id": 125064,
+      "logo_path": "/ojx0ToGogqUQfbJrk3VAPgbbvdK.png",
+      "name": "XRM Media",
+      "origin_country": "US"
+    },
+    {
+      "id": 192148,
+      "logo_path": "/vhn32blbOai3OYzhtL1qXuv1vkq.png",
+      "name": "RandomGood Foundation",
+      "origin_country": "US"
+    },
+    {
+      "id": 149650,
+      "logo_path": "/yIpHbPSpJuHSH7zaOIFSFfns0TR.png",
+      "name": "Human Rights Foundation",
+      "origin_country": "US"
+    },
+    {
+      "id": 155495,
+      "logo_path": "/etde40WElUjrfmYpTO5h4WvSwHN.png",
+      "name": "19340 Productions",
+      "origin_country": "US"
+    },
+    {
+      "id": 207331,
+      "logo_path": "/qCDZ0liWYYqV5DQqsiSp5SRAXAl.png",
+      "name": "The deNovo Initiative",
+      "origin_country": "US"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    }
+  ],
+  "release_date": "2023-10-23",
+  "revenue": 6800,
+  "runtime": 116,
+  "spoken_languages": [
+    {
+      "english_name": "Korean",
+      "iso_639_1": "ko",
+      "name": "한국어/조선말"
+    },
+    {
+      "english_name": "English",
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": "See a place few have ever seen.",
+  "title": "Beyond Utopia",
+  "video": false,
+  "vote_average": 7.7,
+  "vote_count": 58,
+  "genre_ids": [
+    99,
+    36
+  ]
+}

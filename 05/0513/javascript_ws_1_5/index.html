@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+</head>
+<body>
+  <section>
+    <article class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </article>
+    <!-- 아래에 새로운 card 생성 및 추가 -->
+  </section>
+  <script>
+    const article = document.querySelector("article");
+    const section = document.querySelector("section");
+
+    const newarticle = document.querySelector("article");
+    newarticle.classList.add('article');
+
+    const cardTitle = document.createAttribute('h1');
+    cardTitle.textContent = '카드 제목';
+
+    const cardcontent = document.createElement('p');
+    cardcontent.textContent = '카드 내용';
+
+    newarticle.appendChild(cardTitle)
+    newarticle.appendChild(cardcontent)
+
+    document.body.appendChild(newarticle)
+
+    const divvalue = document.createElement('div')
+    divvalue.classList.add('article-body')
+
+    const newH5 = document.createElement('h5')
+    newH5.textContent = '제목'
+    const newP = document.createElement('p')
+    newP.textContent = '내용'
+
+    divvalue.appendChild(newH5)
+    divvalue.appendChild(newP)
+
+    newarticle.appendChild(divvalue)
+
+    section.appendChild(newarticle)
+
+    const oldarticle = document.querySelector('article')
+    section.removeChild(oldArticle)
+
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>

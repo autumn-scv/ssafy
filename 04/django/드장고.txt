@@ -1,0 +1,30 @@
+git clone
+
+cd django_ws_3_1
+
+1. 가상환경 만들기
+python -m venv venv
+
+2. 가상환경 활성화
+source venv/Scripts/activate
+
+3. 장고 설치 
+pip install django
+
+4. requirements의 패키지 설치
+pip install -r requirements.txt
+
+5. 설계도 만들기 makemigrations
+python manage.py makemigrations
+
+6. migrate
+python manage.py migrate
+
+7. ipython
+pip install ipython
+
+8.
+python manage.py shell -v 2
+
+Todo.objects.all()
+ <QuerySet [<Todo: Todo object (1)>]>

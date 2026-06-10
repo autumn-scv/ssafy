@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>받은 메시지를 출력합니다.</h1>
+  <p>받은 메시지</p>
+  {% if message %}
+    <li>{{ message }}</li>
+  {% else %}
+    <li>아직 받은 메시지가 없습니다.</li>
+  {% endif %}
+</body>
+</html>

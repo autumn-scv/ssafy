@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 동등 연산자를 활용한 조건문
+    if (0 == []) {
+      console.log('true?')
+    } else {
+      console.log('false?')
+    }
+    // 실행 결과 : true?
+    // JS에서 []는 숫자와 비교될 때 숫자 0으로 변환됨 고로 0 == 0 true
+
+    // 일치 연산자를 활용한 조건문
+    if ({} === false) {
+      console.log('true?')
+    } else {
+      console.log('false?')
+    }
+    // 실행 결과 : false?
+    // ===는 엄격한 비교(값, 타입 동일해야 함), {}는 객체 | false는 Boolean, 고로 false
+
+    // 논리 연산자를 활용한 단축 평가
+    console.log(0 && 13)
+    // 실행 결과 : 0 
+    // && 연산자는 앞이 false면 뒤는 안 보고 앞의 값 반환함 JS에서 0은 false 취급 됨
+    console.log(0 || 13)
+    // 실행 결과 : 13
+    // ||는 앞이 false면 뒤의 값까지 확인하고 그 값을 반환함
+
+    let num = 12
+    num /= 3
+    console.log(num)
+    // 실행 결과 : 4
+    // num /= 3 은 num = num / 3 과 같은 말
+
+    const number = 13
+    number++
+    // 실행 결과 : TypeError
+    // const로 선언한 변수는 상수, 재할당 불가능
+  </script>
+</body>
+</html>
